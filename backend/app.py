@@ -73,14 +73,10 @@ def get_unique_project_tags(page_size=1000, show_inactive=False):
     df_unique = df.drop_duplicates(subset=["Tag Code"]).reset_index(drop=True)
     return df_unique
 
-# Example usage
-df_unique_tags = get_unique_project_tags()
-print(df_unique_tags)
-
-def get_current_projects_df(limit=None, branch_code=None):
+def get_current_projects_df(limit=1000, branch_code=None):
     """
     Fetch current projects (started but not ended) from VolunteerMatters,
-    include detailed info, and return as a DataFrame.
+    and return as a flattened DataFrame without additional project ID calls.
 
     Args:
         limit (int, optional): Maximum number of projects to return. Default None (return all).
@@ -114,20 +110,13 @@ def get_current_projects_df(limit=None, branch_code=None):
             publish_start = pd.to_datetime(p.get("publishStartDate"), errors="coerce")
             publish_end = pd.to_datetime(p.get("publishEndDate"), errors="coerce")
 
-            # Filter by start/end dates
+            # Filter for current projects
             if publish_start <= now and (publish_end is pd.NaT or publish_end >= now):
                 # Filter by branch code if provided
                 if branch_code and p.get("branch", {}).get("code") != branch_code:
                     continue
 
-                # Fetch detailed info
-                detail_resp = requests.get(
-                    f"{BASE_URL}/projects/{p.get('id')}",
-                    auth=HTTPBasicAuth(API_KEY, API_SECRET),
-                    headers=HEADERS
-                )
-                if detail_resp.status_code == 200:
-                    current_projects.append(detail_resp.json())
+                current_projects.append(p)
 
                 # Stop if we reached the limit
                 if limit and len(current_projects) >= limit:
@@ -143,18 +132,10 @@ def get_current_projects_df(limit=None, branch_code=None):
         flattened_projects.append({
             "Project ID": proj.get("id"),
             "Project Name": proj.get("name"),
-            "Branch ID": proj.get("branch", {}).get("id"),
             "Branch Code": proj.get("branch", {}).get("code"),
-            "Branch Name": proj.get("branch", {}).get("name"),
-            "Branch Active": proj.get("branch", {}).get("active"),
-            "Address": proj.get("address", {}).get("address"),
-            "City": proj.get("address", {}).get("city"),
-            "State": proj.get("address", {}).get("state"),
-            "Postal Code": proj.get("address", {}).get("postalCode"),
-            "Country": proj.get("address", {}).get("country"),
             "Safety Info": proj.get("information", {}).get("safety"),
             "Description": proj.get("information", {}).get("description"),
-            "Community Partners": proj.get("information", {}).get("communityPartners"),
+            #"Community Partners": proj.get("information", {}).get("communityPartners"),
             "Contact Details": proj.get("information", {}).get("contactDetails"),
             "Cancellation Policy": proj.get("information", {}).get("cancellationPolicy"),
             "Goals": proj.get("information", {}).get("goals"),
@@ -163,13 +144,66 @@ def get_current_projects_df(limit=None, branch_code=None):
             "Publish Start Date": proj.get("publishStartDate"),
             "Publish End Date": proj.get("publishEndDate"),
             "Created": proj.get("created"),
-            "Recurring": proj.get("isRecurring")
         })
 
     return pd.DataFrame(flattened_projects)
 
 
-# Example usage (limit to 5 projects)
-df_current_projects = get_current_projects_df(limit=50)
-print(df_current_projects)
-df_current_projects.to_excel("current_projects.xlsx", index=False)
+
+
+
+def get_branch_code_name_dict(show_inactive=False):
+    """
+    Fetch unique branches from VolunteerMatters and return a dictionary
+    mapping branch code to branch name.
+
+    Args:
+        show_inactive (bool): Include inactive branches. Default False.
+
+    Returns:
+        dict: Branch Code -> Branch Name
+    """
+    page_index = 0
+    all_branches = []
+
+    while True:
+        response = requests.get(
+            f"{BASE_URL}/branches",
+            auth=HTTPBasicAuth(API_KEY, API_SECRET),
+            headers=HEADERS,
+            params={
+                "pageIndex": page_index,
+                "pageSize": 1000,
+                "showInactive": show_inactive
+            }
+        )
+
+        if response.status_code != 200:
+            raise Exception(f"Error {response.status_code}: {response.text}")
+
+        data = response.json()
+        branches = data.get("items", data)
+
+        if not branches:
+            break
+
+        all_branches.extend(branches)
+        page_index += 1
+
+        if len(branches) < 1000:
+            break
+
+    # Build dictionary: code -> name
+    branch_dict = {}
+    for b in all_branches:
+        code = b.get("code")
+        name = b.get("name")
+        if code and name:
+            branch_dict[code] = name
+
+    return branch_dict
+
+# Example usage
+branches = get_current_projects_df(limit=10)
+print(branches)
+
