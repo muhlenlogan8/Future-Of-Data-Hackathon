@@ -8,7 +8,11 @@ const Login = () => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		navigate("/projects");
+		if (role === "admin") {
+			navigate("/admin");
+		} else {
+			navigate("/projects");
+		}
 	};
 
 	return (
