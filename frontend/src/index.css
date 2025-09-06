@@ -1,1 +1,84 @@
 @import "tailwindcss";
+
+/* Custom YMCA brand colors */
+:root {
+  --ymca-red: #e21f3f;
+  --ymca-red-dark: #c41e3a;
+  --ymca-blue: #004b87;
+  --ymca-green: #00a651;
+  --ymca-yellow: #ffb81c;
+}
+
+/* Accessibility improvements */
+*:focus {
+  outline: 2px solid var(--ymca-red);
+  outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .bg-red-600 {
+    background-color: #d00000;
+  }
+  .text-red-600 {
+    color: #d00000;
+  }
+  .border-red-500 {
+    border-color: #d00000;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Improved readability for small text */
+.text-sm {
+  font-size: 0.925rem;
+  line-height: 1.5;
+}
+
+/* Better button accessibility */
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Form accessibility improvements */
+input:invalid {
+  border-color: #dc2626;
+}
+
+input:valid {
+  border-color: #059669;
+}
+
+/* Screen reader only class */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  * {
+    color: black !important;
+    background: white !important;
+  }
+}
