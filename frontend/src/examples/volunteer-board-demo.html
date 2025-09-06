@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YMCA Volunteer Opportunity Board</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'ymca-red': '#e53e3e',
+                        'ymca-red-dark': '#c53030',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-6">
+                <div class="flex items-center space-x-4">
+                    <div class="w-12 h-12 bg-red-600 rounded-lg flex items-center justify-center">
+                        <span class="text-white font-bold text-xl">Y</span>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-900">YMCA Volunteer Opportunities</h1>
+                        <p class="text-gray-600">Make a difference in your community</p>
+                    </div>
+                </div>
+                <button class="bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-lg font-medium transition-colors">
+                    Post Opportunity
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="flex flex-col lg:flex-row gap-8">
+            <!-- Sidebar -->
+            <div class="lg:w-1/4">
+                <div class="bg-white rounded-lg shadow-sm border p-6 sticky top-8">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Filter Opportunities</h3>
+                    
+                    <!-- Search -->
+                    <div class="mb-6">
+                        <label for="search" class="block text-sm font-medium text-gray-700 mb-2">
+                            Search
+                        </label>
+                        <input
+                            type="text"
+                            id="search"
+                            placeholder="Search opportunities..."
+                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500"
+                        />
+                    </div>
+
+                    <!-- Categories -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-3">Categories</label>
+                        <div class="space-y-2">
+                            <button class="w-full text-left px-3 py-2 rounded-lg text-sm bg-red-100 text-red-800 border border-red-200">
+                                <div class="flex justify-between items-center">
+                                    <span>All Opportunities</span>
+                                    <span class="text-xs bg-gray-200 text-gray-600 px-2 py-1 rounded-full">6</span>
+                                </div>
+                            </button>
+                            <button class="w-full text-left px-3 py-2 rounded-lg text-sm hover:bg-gray-100 text-gray-700">
+                                <div class="flex justify-between items-center">
+                                    <span>Aquatics</span>
+                                    <span class="text-xs bg-gray-200 text-gray-600 px-2 py-1 rounded-full">2</span>
+                                </div>
+                            </button>
+                            <button class="w-full text-left px-3 py-2 rounded-lg text-sm hover:bg-gray-100 text-gray-700">
+                                <div class="flex justify-between items-center">
+                                    <span>Fitness</span>
+                                    <span class="text-xs bg-gray-200 text-gray-600 px-2 py-1 rounded-full">1</span>
+                                </div>
+                            </button>
+                            <button class="w-full text-left px-3 py-2 rounded-lg text-sm hover:bg-gray-100 text-gray-700">
+                                <div class="flex justify-between items-center">
+                                    <span>Youth Programs</span>
+                                    <span class="text-xs bg-gray-200 text-gray-600 px-2 py-1 rounded-full">2</span>
+                                </div>
+                            </button>
+                            <button class="w-full text-left px-3 py-2 rounded-lg text-sm hover:bg-gray-100 text-gray-700">
+                                <div class="flex justify-between items-center">
+                                    <span>Community</span>
+                                    <span class="text-xs bg-gray-200 text-gray-600 px-2 py-1 rounded-full">1</span>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="lg:w-3/4">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-xl font-semibold text-gray-900">
+                        6 Volunteer Opportunities
+                    </h2>
+                    <select class="px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500">
+                        <option>Sort by: Most Recent</option>
+                        <option>Sort by: Urgency</option>
+                        <option>Sort by: Time Commitment</option>
+                    </select>
+                </div>
+
+                <!-- Opportunity Cards -->
+                <div class="space-y-6">
+                    <!-- Card 1 -->
+                    <div class="bg-white rounded-lg shadow-sm border hover:shadow-md transition-shadow">
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="flex-1">
+                                    <div class="flex items-center gap-3 mb-2">
+                                        <h3 class="text-xl font-semibold text-gray-900">Youth Swim Instructor</h3>
+                                        <span class="px-2 py-1 rounded-full text-xs font-medium border bg-red-100 text-red-800 border-red-200">
+                                            high priority
+                                        </span>
+                                    </div>
+                                    <div class="flex items-center text-gray-600 text-sm space-x-4 mb-3">
+                                        <span class="flex items-center">
+                                            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                            </svg>
+                                            Downtown YMCA
+                                        </span>
+                                        <span class="flex items-center">
+                                            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                            </svg>
+                                            6 hours/week
+                                        </span>
+                                        <span class="text-gray-500">2 days ago</span>
+                                    </div>
+                                </div>
+                                <button class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg font-medium transition-colors flex-shrink-0">
+                                    Apply Now
+                                </button>
+                            </div>
+
+                            <p class="text-gray-700 mb-4">Teach swimming lessons to children ages 6-12. Must be comfortable in water and have patience with young learners.</p>
+
+                            <div class="border-t pt-4">
+                                <h4 class="text-sm font-medium text-gray-900 mb-2">Requirements:</h4>
+                                <ul class="list-disc list-inside text-sm text-gray-600 space-y-1">
+                                    <li>Strong swimming skills</li>
+                                    <li>CPR certified (or willing to get certified)</li>
+                                    <li>Experience with children preferred</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="bg-white rounded-lg shadow-sm border hover:shadow-md transition-shadow">
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="flex-1">
+                                    <div class="flex items-center gap-3 mb-2">
+                                        <h3 class="text-xl font-semibold text-gray-900">Senior Fitness Program Assistant</h3>
+                                        <span class="px-2 py-1 rounded-full text-xs font-medium border bg-yellow-100 text-yellow-800 border-yellow-200">
+                                            medium priority
+                                        </span>
+                                    </div>
+                                    <div class="flex items-center text-gray-600 text-sm space-x-4 mb-3">
+                                        <span class="flex items-center">
+                                            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                            </svg>
+                                            North Branch YMCA
+                                        </span>
+                                        <span class="flex items-center">
+                                            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                            </svg>
+                                            4 hours/week
+                                        </span>
+                                        <span class="text-gray-500">5 days ago</span>
+                                    </div>
+                                </div>
+                                <button class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg font-medium transition-colors flex-shrink-0">
+                                    Apply Now
+                                </button>
+                            </div>
+
+                            <p class="text-gray-700 mb-4">Support fitness programs designed for seniors aged 55+. Help with equipment setup, participant check-in, and program coordination.</p>
+
+                            <div class="border-t pt-4">
+                                <h4 class="text-sm font-medium text-gray-900 mb-2">Requirements:</h4>
+                                <ul class="list-disc list-inside text-sm text-gray-600 space-y-1">
+                                    <li>Friendly and patient demeanor</li>
+                                    <li>Basic fitness knowledge helpful</li>
+                                    <li>Available weekday mornings</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="bg-white rounded-lg shadow-sm border hover:shadow-md transition-shadow">
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="flex-1">
+                                    <div class="flex items-center gap-3 mb-2">
+                                        <h3 class="text-xl font-semibold text-gray-900">After-School Program Mentor</h3>
+                                        <span class="px-2 py-1 rounded-full text-xs font-medium border bg-red-100 text-red-800 border-red-200">
+                                            high priority
+                                        </span>
+                                    </div>
+                                    <div class="flex items-center text-gray-600 text-sm space-x-4 mb-3">
+                                        <span class="flex items-center">
+                                            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                            </svg>
+                                            East Side YMCA
+                                        </span>
+                                        <span class="flex items-center">
+                                            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                            </svg>
+                                            8 hours/week
+                                        </span>
+                                        <span class="text-gray-500">1 week ago</span>
+                                    </div>
+                                </div>
+                                <button class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg font-medium transition-colors flex-shrink-0">
+                                    Apply Now
+                                </button>
+                            </div>
+
+                            <p class="text-gray-700 mb-4">Mentor elementary school children in after-school programs. Help with homework, lead activities, and provide positive role modeling.</p>
+
+                            <div class="border-t pt-4">
+                                <h4 class="text-sm font-medium text-gray-900 mb-2">Requirements:</h4>
+                                <ul class="list-disc list-inside text-sm text-gray-600 space-y-1">
+                                    <li>Background check required</li>
+                                    <li>Experience with children</li>
+                                    <li>Reliable transportation</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="bg-white rounded-lg shadow-sm border hover:shadow-md transition-shadow">
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="flex-1">
+                                    <div class="flex items-center gap-3 mb-2">
+                                        <h3 class="text-xl font-semibold text-gray-900">Community Garden Coordinator</h3>
+                                        <span class="px-2 py-1 rounded-full text-xs font-medium border bg-green-100 text-green-800 border-green-200">
+                                            low priority
+                                        </span>
+                                    </div>
+                                    <div class="flex items-center text-gray-600 text-sm space-x-4 mb-3">
+                                        <span class="flex items-center">
+                                            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                            </svg>
+                                            Westside YMCA
+                                        </span>
+                                        <span class="flex items-center">
+                                            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                            </svg>
+                                            5 hours/week
+                                        </span>
+                                        <span class="text-gray-500">3 days ago</span>
+                                    </div>
+                                </div>
+                                <button class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg font-medium transition-colors flex-shrink-0">
+                                    Apply Now
+                                </button>
+                            </div>
+
+                            <p class="text-gray-700 mb-4">Coordinate community garden activities including planting, maintenance, and harvest events. Perfect for those with green thumbs!</p>
+
+                            <div class="border-t pt-4">
+                                <h4 class="text-sm font-medium text-gray-900 mb-2">Requirements:</h4>
+                                <ul class="list-disc list-inside text-sm text-gray-600 space-y-1">
+                                    <li>Gardening experience preferred</li>
+                                    <li>Outdoor work comfortable</li>
+                                    <li>Weekend availability</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add basic search functionality
+        document.getElementById('search').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const cards = document.querySelectorAll('.space-y-6 > div');
+            
+            cards.forEach(card => {
+                const text = card.textContent.toLowerCase();
+                if (text.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+
+        // Add category filter functionality
+        const categoryButtons = document.querySelectorAll('.space-y-2 button');
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active state from all buttons
+                categoryButtons.forEach(btn => {
+                    btn.className = 'w-full text-left px-3 py-2 rounded-lg text-sm hover:bg-gray-100 text-gray-700';
+                });
+                
+                // Add active state to clicked button
+                this.className = 'w-full text-left px-3 py-2 rounded-lg text-sm bg-red-100 text-red-800 border border-red-200';
+            });
+        });
+    </script>
+</body>
+</html>
