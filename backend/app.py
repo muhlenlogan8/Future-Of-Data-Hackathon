@@ -3,7 +3,8 @@ import requests
 import pandas as pd
 from dotenv import load_dotenv
 from requests.auth import HTTPBasicAuth
-
+from flask import Flask, jsonify
+from flask_cors import CORS
 
 # Load environment variables
 load_dotenv()
@@ -13,6 +14,9 @@ CUSTOMER_CODE = os.getenv("CUSTOMER_CODE")
 
 BASE_URL = "https://api.volunteermatters.io/api/v2"
 HEADERS = {"X-VM-Customer-Code": CUSTOMER_CODE}
+
+app = Flask(__name__)
+CORS(app)
 
 def get_unique_project_tags(page_size=1000, show_inactive=False):
     """
@@ -72,10 +76,6 @@ def get_unique_project_tags(page_size=1000, show_inactive=False):
     # Drop duplicates by Tag Code
     df_unique = df.drop_duplicates(subset=["Tag Code"]).reset_index(drop=True)
     return df_unique
-
-# Example usage
-df_unique_tags = get_unique_project_tags()
-print(df_unique_tags)
 
 def get_current_projects_df(limit=None, branch_code=None):
     """
@@ -168,8 +168,13 @@ def get_current_projects_df(limit=None, branch_code=None):
 
     return pd.DataFrame(flattened_projects)
 
+@app.route("/api/projects", methods=["GET"])
+def getProjects():
+    try:
+        projects_df = get_current_projects_df(limit=20)
+        projects = projects_df.to_dict(orient="records")  # Convert DataFrame to list of dicts
+        return jsonify(projects)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
-# Example usage (limit to 5 projects)
-df_current_projects = get_current_projects_df(limit=50)
-print(df_current_projects)
-df_current_projects.to_excel("current_projects.xlsx", index=False)
+app.run(debug=True)
