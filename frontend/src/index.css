@@ -20,9 +20,11 @@
   .bg-red-600 {
     background-color: #d00000;
   }
+
   .text-red-600 {
     color: #d00000;
   }
+
   .border-red-500 {
     border-color: #d00000;
   }
@@ -76,9 +78,34 @@ input:valid {
   .no-print {
     display: none !important;
   }
-  
+
   * {
     color: black !important;
     background: white !important;
+  }
+}
+
+/* Animations */
+@keyframes fadeSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
