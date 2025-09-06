@@ -1,0 +1,161 @@
+@import "tailwindcss";
+
+/* YMCA-Inspired Color Themes for Tailwind CSS v4 */
+/* Based on national YMCA brand colors and Cincinnati YMCA local branding */
+
+@theme {
+  --color-ymca-blue-50: #eff9ff;
+  --color-ymca-blue-100: #def3ff;
+  --color-ymca-blue-200: #b6e7ff;
+  --color-ymca-blue-300: #75d7ff;
+  --color-ymca-blue-400: #2cc3ff;
+  --color-ymca-blue-500: #00aeef;
+  --color-ymca-blue-600: #008fcd;
+  --color-ymca-blue-700: #0072a6;
+  --color-ymca-blue-800: #065f89;
+  --color-ymca-blue-900: #0b5071;
+
+  --color-ymca-teal-50: #edfffe;
+  --color-ymca-teal-100: #d1fffe;
+  --color-ymca-teal-200: #a8fffd;
+  --color-ymca-teal-300: #6bfcfa;
+  --color-ymca-teal-400: #27eee9;
+  --color-ymca-teal-500: #01a490;
+  --color-ymca-teal-600: #00857b;
+  --color-ymca-teal-700: #066b65;
+  --color-ymca-teal-800: #0a5551;
+  --color-ymca-teal-900: #0d4744;
+
+  --color-ymca-purple-50: #fdf4ff;
+  --color-ymca-purple-100: #fae6ff;
+  --color-ymca-purple-200: #f5cfff;
+  --color-ymca-purple-300: #eeabff;
+  --color-ymca-purple-400: #e279ff;
+  --color-ymca-purple-500: #92278f;
+  --color-ymca-purple-600: #7e1f7a;
+  --color-ymca-purple-700: #6b1a65;
+  --color-ymca-purple-800: #591754;
+  --color-ymca-purple-900: #4a1447;
+
+  --color-ymca-red-50: #fef2f2;
+  --color-ymca-red-100: #fee2e2;
+  --color-ymca-red-200: #fecaca;
+  --color-ymca-red-300: #fca5a5;
+  --color-ymca-red-400: #f87171;
+  --color-ymca-red-500: #ed1c24;
+  --color-ymca-red-600: #d11a20;
+  --color-ymca-red-700: #b0161c;
+  --color-ymca-red-800: #93161c;
+  --color-ymca-red-900: #7c181d;
+
+  --color-ymca-orange-50: #fffbeb;
+  --color-ymca-orange-100: #fef3c7;
+  --color-ymca-orange-200: #fde68a;
+  --color-ymca-orange-300: #fcd34d;
+  --color-ymca-orange-400: #fbbf24;
+  --color-ymca-orange-500: #f47920;
+  --color-ymca-orange-600: #d97706;
+  --color-ymca-orange-700: #b45309;
+  --color-ymca-orange-800: #92400e;
+  --color-ymca-orange-900: #78350f;
+
+  --color-ymca-gray-50: #f9fafb;
+  --color-ymca-gray-100: #f3f4f6;
+  --color-ymca-gray-200: #e5e7eb;
+  --color-ymca-gray-300: #d1d5db;
+  --color-ymca-gray-400: #9ca3af;
+  --color-ymca-gray-500: #6b7280;
+  --color-ymca-gray-600: #4b5563;
+  --color-ymca-gray-700: #374151;
+  --color-ymca-gray-800: #32373c;
+  --color-ymca-gray-900: #111827;
+
+  /* Primary Brand Colors - Exact YMCA brand colors */
+  --color-primary: var(--color-ymca-blue-500);
+  --color-primary-dark: var(--color-ymca-blue-700);
+  --color-secondary: var(--color-ymca-teal-500);
+  --color-accent: var(--color-ymca-purple-500);
+  --color-accent-light: var(--color-ymca-purple-300);
+  --color-warning: var(--color-ymca-orange-500);
+  --color-danger: var(--color-ymca-red-500);
+
+  /* Cincinnati YMCA specific colors */
+  --color-cincinnati-blue: #00a1e4;
+  --color-cincinnati-purple: #92278f;
+  --color-cincinnati-dark: #32373c;
+
+  /* Multi-colorway variations from national YMCA */
+  --color-ymca-green-primary: #00b19d;
+  --color-ymca-green-secondary: #0095da;
+  --color-ymca-orange-primary: #f99d1c;
+  --color-ymca-orange-secondary: #00a796;
+  --color-ymca-purple-primary: #ab218e;
+  --color-ymca-purple-secondary: #c1272d;
+  --color-ymca-red-primary: #e31f26;
+  --color-ymca-red-secondary: #f7941e;
+
+  /* Semantic color mappings */
+  --color-success: var(--color-ymca-teal-500);
+  --color-info: var(--color-ymca-blue-500);
+  --color-warning: var(--color-ymca-orange-500);
+  --color-error: var(--color-ymca-red-500);
+  
+  /* Background and surface colors */
+  --color-background: #ffffff;
+  --color-surface: var(--color-ymca-gray-50);
+  --color-surface-variant: var(--color-ymca-gray-100);
+  
+  /* Text colors */
+  --color-on-primary: #ffffff;
+  --color-on-secondary: #ffffff;
+  --color-on-surface: var(--color-ymca-gray-900);
+  --color-on-background: var(--color-ymca-gray-900);
+}
+
+/* Alternative theme configuration for dark mode */
+@media (prefers-color-scheme: dark) {
+  @theme {
+    --color-background: var(--color-ymca-gray-900);
+    --color-surface: var(--color-ymca-gray-800);
+    --color-surface-variant: var(--color-ymca-gray-700);
+    --color-on-surface: var(--color-ymca-gray-100);
+    --color-on-background: var(--color-ymca-gray-100);
+  }
+}
+
+/* YMCA Theme Variants - Use these classes to switch between color schemes */
+.theme-ymca-blue {
+  --color-primary: var(--color-ymca-blue-500);
+  --color-primary-dark: var(--color-ymca-blue-700);
+  --color-secondary: var(--color-ymca-purple-500);
+}
+
+.theme-ymca-teal {
+  --color-primary: var(--color-ymca-teal-500);
+  --color-primary-dark: var(--color-ymca-teal-700);
+  --color-secondary: var(--color-ymca-blue-500);
+}
+
+.theme-ymca-purple {
+  --color-primary: var(--color-ymca-purple-500);
+  --color-primary-dark: var(--color-ymca-purple-700);
+  --color-secondary: var(--color-ymca-red-500);
+}
+
+.theme-ymca-red {
+  --color-primary: var(--color-ymca-red-500);
+  --color-primary-dark: var(--color-ymca-red-700);
+  --color-secondary: var(--color-ymca-orange-500);
+}
+
+.theme-ymca-orange {
+  --color-primary: var(--color-ymca-orange-500);
+  --color-primary-dark: var(--color-ymca-orange-700);
+  --color-secondary: var(--color-ymca-teal-500);
+}
+
+.theme-cincinnati {
+  --color-primary: var(--color-cincinnati-blue);
+  --color-secondary: var(--color-cincinnati-purple);
+  --color-accent: var(--color-cincinnati-dark);
+}
